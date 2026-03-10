@@ -272,7 +272,7 @@ St. Joseph's College of Engineering and Technology, Palai"
                 </thead>
 
                 <tbody>
-                  {students.map((student, index) => (
+                  {students.slice(0, 10).map((student, index) => (
                     <tr key={index}>
                       <td className="p-3 border-b">{index + 1}</td>
                       <td className="p-3 border-b">{student.Name}</td>
@@ -283,6 +283,11 @@ St. Joseph's College of Engineering and Technology, Palai"
                   ))}
                 </tbody>
               </table>
+              {students.length > 10 && (
+                <p className="text-xs text-black/50 p-3 text-center">
+                  Showing 10 of {students.length} students
+                </p>
+              )}
             </div>
           </section>
         )}
