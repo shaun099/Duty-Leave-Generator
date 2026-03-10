@@ -36,7 +36,21 @@ export const generateRouter = router({
       });
 
       const now = new Date();
-      const currentDate = `${String(now.getDate()).padStart(2, "0")} ${String(now.getMonth() + 1).padStart(2, "0")} ${now.getFullYear()}`;
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const currentDate = `${String(now.getDate()).padStart(2, "0")} ${months[now.getMonth()]} ${now.getFullYear()}`;
 
       doc.setData({
         from: input.from,
