@@ -18,8 +18,8 @@ export const generateRouter = router({
           z.object({
             sl: z.number(),
             name: z.string(),
-            regno: z.string(),
             dept: z.string(),
+            batch:z.string(),
             year: z.string(),
           }),
         ),

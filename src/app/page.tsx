@@ -6,8 +6,8 @@ import { trpc } from "@/utils/trpc";
 
 type Student = {
   Name: string;
-  RegisterNo: string;
   Department: string;
+  batch: string;
   Year: string;
 };
 
@@ -81,8 +81,8 @@ export default function Home() {
       const formattedStudents = students.map((s, i) => ({
         sl: i + 1,
         name: s.Name,
-        regno: s.RegisterNo,
         dept: s.Department,
+        batch: s.batch,
         year: s.Year,
       }));
 
@@ -241,7 +241,7 @@ St. Joseph's College of Engineering and Technology, Palai"
                   : "Click to upload .csv file"}
               </p>
               <p className="text-xs text-black/50 mt-1">
-                CSV must have columns: Name, RegisterNo, Department, Year
+                CSV must have columns: Name, Department, Batch, Year
               </p>
             </div>
             <input
@@ -265,9 +265,9 @@ St. Joseph's College of Engineering and Technology, Palai"
                   <tr>
                     <th className="p-3 border-b">Sl No</th>
                     <th className="p-3 border-b">Name</th>
-                    <th className="p-3 border-b">Register No</th>
                     <th className="p-3 border-b">Department</th>
-                    <th className="p-3 border-b">Year</th>
+                    <th className="p-3 border-b">Batch</th>
+                    <th className="p-3 border-b">Year of Study</th>
                   </tr>
                 </thead>
 
@@ -276,8 +276,8 @@ St. Joseph's College of Engineering and Technology, Palai"
                     <tr key={index}>
                       <td className="p-3 border-b">{index + 1}</td>
                       <td className="p-3 border-b">{student.Name}</td>
-                      <td className="p-3 border-b">{student.RegisterNo}</td>
                       <td className="p-3 border-b">{student.Department}</td>
+                      <td className="p-3 border-b">{student.batch}</td>
                       <td className="p-3 border-b">{student.Year}</td>
                     </tr>
                   ))}
