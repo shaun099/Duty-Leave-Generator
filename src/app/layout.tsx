@@ -1,6 +1,10 @@
 import "./globals.css";
 import { Providers } from "./providers";
 
+export const metadata = {
+  title: "Letter Generator",
+};
+
 export default function RootLayout({
   children,
 }: {
