@@ -7,7 +7,7 @@ import { trpc } from "@/utils/trpc";
 type Student = {
   Name: string;
   Department: string;
-  batch: string;
+  Batch: string;
   Year: string;
 };
 
@@ -82,7 +82,7 @@ export default function Home() {
         sl: i + 1,
         name: s.Name,
         dept: s.Department,
-        batch: s.batch,
+        batch: s.Batch,
         year: s.Year,
       }));
 
@@ -277,7 +277,7 @@ St. Joseph's College of Engineering and Technology, Palai"
                       <td className="p-3 border-b">{index + 1}</td>
                       <td className="p-3 border-b">{student.Name}</td>
                       <td className="p-3 border-b">{student.Department}</td>
-                      <td className="p-3 border-b">{student.batch}</td>
+                      <td className="p-3 border-b">{student.Batch}</td>
                       <td className="p-3 border-b">{student.Year}</td>
                     </tr>
                   ))}
