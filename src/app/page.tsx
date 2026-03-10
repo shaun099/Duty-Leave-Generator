@@ -25,7 +25,9 @@ export default function Home() {
 
   const generateMutation = trpc.generate.generateLetter.useMutation();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setEventDetails({
       ...eventDetails,
       [e.target.name]: e.target.value,
@@ -153,21 +155,25 @@ export default function Home() {
               <label className="block text-sm font-medium text-black">
                 From
               </label>
-              <input
+              <textarea
                 name="from"
+                rows={3}
                 value={eventDetails.from}
                 onChange={handleInputChange}
-                className="border border-black/20 p-2.5 rounded-lg w-full"
+                className="border border-black/20 p-2.5 rounded-lg w-full text-black placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/20"
               />
             </div>
 
             <div className="space-y-1">
               <label className="block text-sm font-medium text-black">To</label>
-              <input
+              <textarea
                 name="to"
+                rows={3}
+                placeholder="The Principal
+St. Joseph's College of Engineering and Technology, Palai"
                 value={eventDetails.to}
                 onChange={handleInputChange}
-                className="border border-black/20 p-2.5 rounded-lg w-full"
+                className="border border-black/20 p-2.5 rounded-lg w-full text-black placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/20"
               />
             </div>
 
@@ -285,7 +291,9 @@ export default function Home() {
           onClick={handleGenerate}
           className="w-full sm:w-auto bg-black text-white px-8 py-3 rounded-xl font-medium hover:bg-black/85 transition-colors"
         >
-          {generateMutation.isPending ? "Generating..." : "Generate Duty Leave Letter"}
+          {generateMutation.isPending
+            ? "Generating..."
+            : "Generate Duty Leave Letter"}
         </button>
       </div>
     </div>
