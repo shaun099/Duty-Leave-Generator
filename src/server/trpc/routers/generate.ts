@@ -19,7 +19,7 @@ export const generateRouter = router({
             sl: z.number(),
             name: z.string(),
             dept: z.string(),
-            batch:z.string(),
+            batch: z.string(),
             year: z.string(),
           }),
         ),
@@ -52,6 +52,22 @@ export const generateRouter = router({
       ];
       const currentDate = `${String(now.getDate()).padStart(2, "0")} ${months[now.getMonth()]} ${now.getFullYear()}`;
 
+      // Sort students by department, then year, then batch, then name
+      const sortedStudents = [...input.students].sort((a, b) => {
+        return (
+          a.dept.localeCompare(b.dept) ||
+          a.year.localeCompare(b.year) ||
+          a.batch.localeCompare(b.batch) ||
+          a.name.localeCompare(b.name)
+        );
+      });
+
+      // Re-assign serial numbers after sorting
+      const numberedStudents = sortedStudents.map((s, i) => ({
+        ...s,
+        sl: i + 1,
+      }));
+
       doc.setData({
         from: input.from,
         to: input.to,
@@ -59,7 +75,7 @@ export const generateRouter = router({
         venue: input.venue,
         date: currentDate,
         time: input.time,
-        students: input.students,
+        students: numberedStudents,
       });
 
       doc.render();
